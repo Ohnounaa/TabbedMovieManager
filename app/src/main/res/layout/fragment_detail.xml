@@ -9,7 +9,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_container"
-        android:background="@drawable/purple_gradient"
+        android:background="@color/dark_gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/movie_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/movie_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -41,7 +41,6 @@
             app:layout_constraintEnd_toEndOf="@id/movie_image"
             app:layout_constraintStart_toStartOf="@id/movie_image"
             app:layout_constraintTop_toBottomOf="@id/movie_image">
-
             <TextView
                 android:id="@+id/release_date"
                 android:layout_width="match_parent"
@@ -86,7 +85,6 @@
             android:textColor="@color/yellow"/>
         <TextView
             android:id="@+id/movie_overview"
-
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
