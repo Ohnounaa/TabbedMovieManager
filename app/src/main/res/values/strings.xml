@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TabbedMovieManager</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="favorites">FAVORITES</string>
+    <string name="remove_from_favorites">Remove from Favorites</string>
+    <string name="new_and_popular_films">New And Popular Films</string>
+    <string name="favorite_films">Favorite Films</string>
+    <string name="new_and_trending">New And Trending</string>
+    <string name="your_favorites">Your Favorites</string>
+</resources>
