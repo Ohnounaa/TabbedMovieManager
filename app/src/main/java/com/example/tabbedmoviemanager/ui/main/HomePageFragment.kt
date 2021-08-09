@@ -2,6 +2,7 @@ package com.example.tabbedmoviemanager.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -51,13 +52,39 @@ class HomePageFragment: Fragment() {
                 }
             }
         )
+
+        val listener = object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                val action = e.action
+                return if(rv.canScrollHorizontally(RecyclerView.FOCUS_FORWARD)) {
+                    when(action) {MotionEvent.ACTION_MOVE -> rv.parent.requestDisallowInterceptTouchEvent(true) }
+                    false
+                } else {
+                    when(action) {MotionEvent.ACTION_MOVE -> rv.parent.requestDisallowInterceptTouchEvent(false)
+                    }
+                    rv.removeOnItemTouchListener(this)
+                    true
+                }
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+            }
+
+        }
+
         homeViewModel.popularMovies?.observe(
             viewLifecycleOwner, { movies ->
                 binding.popularMovieCollection.apply {
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     adapter = MovieAdapter(movies)
+                    addOnItemTouchListener(listener)
+
                 }
             }
+
         )
         return fragmentLayout
     }

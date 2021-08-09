@@ -66,15 +66,15 @@ class DetailFragment: Fragment() {
             movieViewModel?.setGenres(movie.genre_ids, genresNamesList)
             loadImage(movieImage, imageUrlStem + movie.poster_path)
             if(favoriteMoviesViewModel.favoriteMovies.contains(movie)) {
-                //favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
+                favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
             }
             favoriteButton.setOnClickListener {
                 if(!favoriteMoviesViewModel.favoriteMovies.contains(movie)) {
                     favoriteMoviesViewModel.addFavoriteMovie(movie)
-                  //  favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
+                   favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
                 } else {
                     favoriteMoviesViewModel.removeFavoriteMovie(movie)
-                //    favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+                    favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
                 }
             }
         }
