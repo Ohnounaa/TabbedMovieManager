@@ -26,9 +26,6 @@ class HomePageFragment: Fragment() {
     private val homeViewModel: HomePageViewModel by lazy {
         ViewModelProvider(requireActivity()).get(HomePageViewModel::class.java)
     }
-    private val favoriteMoviesViewModel: FavoriteMoviesViewModel by lazy {
-        ViewModelProvider(requireActivity()).get(FavoriteMoviesViewModel::class.java)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,17 +39,6 @@ class HomePageFragment: Fragment() {
             false
         )
         fragmentLayout = binding.root
-        homeViewModel.currentMovies?.observe(
-            viewLifecycleOwner, { movies ->
-                binding.nowPlayingMovieCollection.apply {
-                    layoutManager = LinearLayoutManager(context,
-                        RecyclerView.HORIZONTAL,
-                        false)
-                    adapter = MovieAdapter(movies)
-                }
-            }
-        )
-
         val listener = object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                 val action = e.action
@@ -66,14 +52,21 @@ class HomePageFragment: Fragment() {
                     true
                 }
             }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-            }
-
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         }
+
+        homeViewModel.currentMovies?.observe(
+            viewLifecycleOwner, { movies ->
+                binding.nowPlayingMovieCollection.apply {
+                    layoutManager = LinearLayoutManager(context,
+                        RecyclerView.HORIZONTAL,
+                        false)
+                    adapter = MovieAdapter(movies)
+                    addOnItemTouchListener(listener)
+                }
+            }
+        )
 
         homeViewModel.popularMovies?.observe(
             viewLifecycleOwner, { movies ->
@@ -81,7 +74,6 @@ class HomePageFragment: Fragment() {
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     adapter = MovieAdapter(movies)
                     addOnItemTouchListener(listener)
-
                 }
             }
 

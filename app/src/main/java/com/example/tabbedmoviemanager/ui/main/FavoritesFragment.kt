@@ -21,6 +21,10 @@ class FavoritesFragment: Fragment() {
         ViewModelProvider(requireActivity()).get(FavoriteMoviesViewModel::class.java)
     }
 
+    private val detailViewModel: DetailViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(DetailViewModel::class.java)
+    }
+
     private val imageUrlStem = "https://image.tmdb.org/t/p/w500/"
     lateinit var fragmentLayout: View
 
@@ -74,7 +78,6 @@ class FavoritesFragment: Fragment() {
     }
 
     inner class FavoriteMovieViewHolder(private val binding: FavoriteMovieViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
-        //  init { binding.movieViewModel = movieViewModel }
         fun bind(movie: Movie) {
             binding.apply {
                 binding.favoriteMovieTitle.text = movie.title
@@ -82,6 +85,7 @@ class FavoritesFragment: Fragment() {
                 removeButton.setOnClickListener {
                     favoriteMoviesViewModel.removeFavoriteMovie(movie)
                 }
+                movieImage.setOnClickListener{ detailViewModel.selectMovie(movie) }
                 executePendingBindings()
             }
         }
