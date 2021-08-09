@@ -85,7 +85,7 @@ class HomePageFragment: Fragment() {
         fun bind(movie: Movie) {
             binding.apply {
             detailViewModel.setMovieImageUrl(imageUrlStem + movie.poster_path)
-            loadImage(movieImage, detailViewModel.url.value?:"")
+            loadImageForHomeAndDetailView(movieImage, detailViewModel.url.value?:"")
                 movieImage.setOnClickListener{ detailViewModel.selectMovie(movie) }
                 executePendingBindings()
             }

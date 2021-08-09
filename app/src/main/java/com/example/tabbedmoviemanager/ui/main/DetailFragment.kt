@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tabbedmoviemanager.Models.Genre
 import com.example.tabbedmoviemanager.Models.Movie
@@ -62,7 +61,7 @@ class DetailFragment: BottomSheetDialogFragment() {
             movieViewModel?.setReleaseDate(movie.release_date)
             movieViewModel?.setRating(movie.vote_average)
             movieViewModel?.setGenres(movie.genre_ids, genresNamesList)
-            loadImage(movieImage, imageUrlStem + movie.poster_path)
+            loadImageForHomeAndDetailView(movieImage, imageUrlStem + movie.poster_path)
             if(favoriteMoviesViewModel.favoriteMovies.contains(movie)) {
                 favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
             }

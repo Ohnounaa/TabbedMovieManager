@@ -81,7 +81,7 @@ class FavoritesFragment: Fragment() {
         fun bind(movie: Movie) {
             binding.apply {
                 binding.favoriteMovieTitle.text = movie.title
-                loadImage(binding.movieImage, imageUrlStem + movie.poster_path)
+                loadImageForFavoritesView(binding.movieImage, imageUrlStem + movie.poster_path)
                 removeButton.setOnClickListener {
                     favoriteMoviesViewModel.removeFavoriteMovie(movie)
                 }

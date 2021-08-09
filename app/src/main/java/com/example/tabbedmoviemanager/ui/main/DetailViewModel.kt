@@ -60,8 +60,13 @@ class DetailViewModel: ViewModel() {
 }
 
 @BindingAdapter("android:src")
-fun loadImage(iv: ImageView, url: String) {
+fun loadImageForHomeAndDetailView(iv: ImageView, url: String) {
     Picasso
         .with(iv.context).load(url).resize(600,800).into(iv)
+}
+
+fun loadImageForFavoritesView(iv: ImageView, url: String) {
+    Picasso
+        .with(iv.context).load(url).resize(900,900).into(iv)
 }
 
