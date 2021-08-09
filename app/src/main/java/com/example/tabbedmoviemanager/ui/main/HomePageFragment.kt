@@ -95,15 +95,6 @@ class HomePageFragment: Fragment() {
             detailViewModel.setMovieImageUrl(imageUrlStem + movie.poster_path)
             loadImage(movieImage, detailViewModel.url.value?:"")
                 movieImage.setOnClickListener{ detailViewModel.selectMovie(movie) }
-                favoriteButton.setOnClickListener{
-                    if(!favoriteMoviesViewModel.favoriteMovies.contains(movie)){
-                        favoriteMoviesViewModel.addFavoriteMovie(movie)
-                        favoriteButton.setBackgroundResource(com.example.tabbedmoviemanager.R.drawable.ic_baseline_favorite_24)
-                    } else {
-                        favoriteMoviesViewModel.removeFavoriteMovie(movie)
-                       favoriteButton.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
-                    }
-                }
                 executePendingBindings()
             }
         }

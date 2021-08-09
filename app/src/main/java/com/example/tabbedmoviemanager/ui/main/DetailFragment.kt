@@ -11,9 +11,10 @@ import com.example.tabbedmoviemanager.Models.Genre
 import com.example.tabbedmoviemanager.Models.Movie
 import com.example.tabbedmoviemanager.R
 import com.example.tabbedmoviemanager.databinding.FragmentDetailBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class DetailFragment: Fragment() {
+class DetailFragment: BottomSheetDialogFragment() {
 
     private val imageUrlStem = "https://image.tmdb.org/t/p/w500/"
     lateinit var fragmentLayout: View
@@ -46,9 +47,6 @@ class DetailFragment: Fragment() {
             detailViewModel.selectedMovie.observe( viewLifecycleOwner, { movie ->
                 createDetailView(movie, binding, genres) })
         })
-
-
-
         return fragmentLayout
     }
 
