@@ -26,15 +26,9 @@ class SectionsPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
         when(position) {
             0 -> {
                 fragment = HomePageFragment()
-                Log.d("ALIZA", "TAB 0")
             }
             1 -> {
                 fragment = FavoritesFragment()
-                Log.d("ALIZA", "TAB 1")
-            }
-            else -> {
-              //  fragment = HomePageFragment()
-                Log.d("ALIZA", position.toString())
             }
         }
         return  fragment

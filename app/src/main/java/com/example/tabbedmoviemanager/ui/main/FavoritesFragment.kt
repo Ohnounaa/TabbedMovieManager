@@ -90,13 +90,4 @@ class FavoritesFragment: Fragment() {
             }
         }
     }
-
-    companion object {
-        fun newInstance(
-        ) : FavoritesFragment {
-            val args = Bundle().apply{}
-            return FavoritesFragment().apply {  arguments = args }
-        }
-    }
-
 }
