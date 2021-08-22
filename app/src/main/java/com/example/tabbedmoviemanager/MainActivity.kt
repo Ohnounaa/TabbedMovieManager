@@ -40,11 +40,9 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.let{
                 DetailFragment.newInstance().apply{
                     show(it, "ALIZA")
+                    }
                 }
             }
-
-            }
         )
-
     }
 }

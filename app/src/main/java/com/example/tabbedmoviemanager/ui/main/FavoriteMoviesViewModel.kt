@@ -22,7 +22,7 @@ class FavoriteMoviesViewModel: ViewModel() {
         if(favoriteMovies.contains(movieToRemove)) {
             favoriteMovies.remove(movieToRemove)
             favoriteMoviesLiveData?.value = favoriteMovies
-            removeFavoriteMovie(movieToRemove)
+            removeFavoriteMovieInDb(movieToRemove)
         }
     }
 
